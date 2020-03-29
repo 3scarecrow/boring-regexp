@@ -1,8 +1,8 @@
 {
-  "name": "Undefined",
+  "name": "boring-regexp",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/3scarecrow/Undefined.git",
+  "repository": "https://github.com/3scarecrow/boring-regexp.git",
   "author": "sunjunhao <1648314523@qq.com>",
   "license": "MIT",
   "scripts": {
