@@ -1,0 +1,15 @@
+{
+  "name": "Undefined",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/3scarecrow/Undefined.git",
+  "author": "sunjunhao <1648314523@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "docs:serve": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "dependencies": {
+    "vuepress": "^1.4.0"
+  }
+}
