@@ -289,6 +289,10 @@ console.log(result)
 // 123,456,789.12
 ```
 
+可以看看可视图的正则
+
+![千分位正则可视图](./images/thousands.png)
+
 ### 2 获取url参数
 
 使用 `RegExp()` 构造函数构建动态正则表达式
@@ -330,4 +334,4 @@ getQuery()
 
 ## 附录
 
-[正则可视化工具](https://regexper.com/)
+[正则可视化工具](https://jex.im/regulex/#!flags=&re=%5E(a%7Cb)*%3F%24)
