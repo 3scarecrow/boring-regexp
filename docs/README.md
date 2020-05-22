@@ -320,7 +320,7 @@ getQueryParam('userid')
 
 ```js
 function getQuery() {
-  var reg = /(^|&)([^=]*)=([^&]*)(&|$)/ig
+  var reg = /(^|&)([^=]*)=([^&]*)/ig
   var string = window.location.search.substr(1)
   var result = {}
   string.replace(reg, (match, p1, key, value, p4) => {
