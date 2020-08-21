@@ -298,38 +298,47 @@ console.log(result)
 使用 `RegExp()` 构造函数构建动态正则表达式
 
 ```js
-function getQueryParam(key) {
-  var reg = new RegExp('(^|&)' + key + '=([^&]*)(&|$)', 'i')
-  var result = window.location.search.substr(1).match(reg)  
+function getQueryParam(url, key) {
+  var reg = new RegExp('[/?|&]' + key + '=([^&]*)', 'i')
+  var result =url.match(reg)  
   if (result != null) {
-    return decodeURIComponent(result[2])
+    return decodeURIComponent(result[1])
   }
   return null
 }
 
-getQueryParam('userid')
+getQueryParam('http.example.com?name=3scarecrow', 'name')
 ```
 
-- `(^|&)` 匹配参数字符串的开头或 `&` 字符
-- `([^&]*)` 匹配非 `&` 的多个任意字符，此处匹配的是 `key` 对应的值，它会出现在匹配结果的第三项
-- `(&|$)` 匹配 `&` 字符或结尾
+- `[/?|&]` 匹配参数字符串的 `?` 或 `&` 字符
+- `([^&]*)` 匹配非 `&` 的多个任意字符，此处匹配的是 `key` 对应的值，它会出现在匹配结果的第二项
 
 ### 3 获取url query对象
 
 若想获取所有的URL参数对象可使用以下方法
 
 ```js
-function getQuery() {
-  var reg = /(^|&)([^=]*)=([^&]*)/ig
-  var string = window.location.search.substr(1)
-  var result = {}
-  string.replace(reg, (match, p1, key, value, p4) => {
-    result[key] = decodeURIComponent(value)
+function getQuery(url) {
+  var reg = /[\?|&]([^=]*)=([^&]*)/ig
+  var query = Object.create(null)
+  url.replace(reg, (match, key, value) => {
+    query[key] = decodeURIComponent(value)
   })
-  return result
+  return query
 }
+```
 
-getQuery()
+OR
+
+```js
+function getQuery(url) {
+  var reg = /[\?|&]([^=]*)=([^&]*)/ig
+  var result, query = Object.create(null)
+  while((result = reg.exec(url)) !== null) {
+    query[result[1]] = decodeURIComponent(result[2])
+  }
+  return query
+}
 ```
 
 ## 附录
